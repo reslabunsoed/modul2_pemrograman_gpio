@@ -78,7 +78,23 @@ void loop()
 ```
 4. Simpan sketch dengan nama file modul2_output
 5. Konfigurasi rangkaian
-6. Berikutnya compile dan upload program ke dalam Arduino board. Perhatikan dan berikan analisi pada hasil yang terjadi, apakah sesuai dengan spesifikasi atau tidak.
+
+Membuat rangkaian yang menghubungkan pin pada seven segment dengan Pin digital menggunakan breadboard
+
+📊 Mapping Pin 7-Segment ke Arduino
+
+| Segmen | Label | Pin Arduino |
+|--------|-------|------------|
+| a      | a     | 7          |
+| b      | b     | 6          |
+| c      | c     | 5          |
+| d      | d     | 11         |
+| e      | e     | 10         |
+| f      | f     | 8          |
+| g      | g     | 9          |
+| dp     | titik | 4          |
+
+7. Berikutnya compile dan upload program ke dalam Arduino board. Perhatikan dan berikan analisi pada hasil yang terjadi, apakah sesuai dengan spesifikasi atau tidak.
 
 <h2></h2>
 
