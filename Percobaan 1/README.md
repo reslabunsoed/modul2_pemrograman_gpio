@@ -96,6 +96,12 @@ Membuat rangkaian yang menghubungkan pin pada seven segment dengan Pin digital m
 
 7. Berikutnya compile dan upload program ke dalam Arduino board. Perhatikan dan berikan analisi pada hasil yang terjadi, apakah sesuai dengan spesifikasi atau tidak.
 
+## 🚀 Pertanyaan Praktikum
+1.	Gambarkan rangkaian schematic yang digunakan pada percobaan!
+2.	Apa yang terjadi jika nilai num lebih dari 15?
+3.	Apakah program ini menggunakan common cathode atau common anode? Jelaskan alasanya!
+4.	Modifikasi program agar tampilan berjalan dari F ke 0 dan berikan penjelasan disetiap baris kode nya dalam bentuk README.md!
+
 <h2></h2>
 
 <br>
