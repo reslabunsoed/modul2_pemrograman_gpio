@@ -170,6 +170,10 @@ https://github.com/user-attachments/assets/8eb97c45-85ce-40b7-8cfd-cd6f978b9f37
 
 ## 📚 Pertanyaan Praktikum
 
+1.	Uraikan hasil tugas pada praktikum yang telah dilakukan pada setiap percobaan!
+2.	Bagaimana prinsip kerja dari Seven Segment Display dalam menampilkan angka dan karakter?
+3.	Jelaskan bagaimana sistem counter bekerja pada program tersebut!
+
 ## 🧰 Mengakhiri Percobaan
 
 Berikut hal yang perlu dilakukan setelah selesai praktikum:
