@@ -1,99 +1,125 @@
-# Percobaan 2: Perulangan
+# Percobaan 2: Input dengan Push Button
 
 ## 🎯 Tujuan
-Fokus percobaan adalah memahami penggunaan perulangan (for) untuk mengontrol LED berdasarkan kondisi tertentu.
+Fokus percobaan adalah menghubungkan dan mengendalikan rangkaian input (push button) dan output (seven segment) dalam satu sistem terintegrasi.
 
 ## 💡 Spesifikasi yang Diharapkan
-1)	Kongfigurasi pin sesuai dengan petunjuk praktikum pada bagian langkah percobaan
-2)	LED menyala secara berurutan dari kiri ke kanan 
-3)	Setelah LED terakhir, arah berubah ke kanan ke kiri 
-4)	Pola berjalan terus menerus tanpa error 
-5)	Tidak ada LED yang mati atau tidak sesuai urutan
+1.	Tampilan angka pada Seven Segment Display berjalan dengan benar
+2.	Push button berfungsi sebagai input control
+3.	Fungsi counter berjalan sesuai logika
+4.	Tidak terjadi kesalahan tampilan (glitch)
 
 ## ♻️ Langkah Percobaan
 1. Persiapkan Alat dan Bahan
 
-a.	Lakukan seperti halnya tugas pendahuluan poin 1
-b.	Pastikan Arduino Uno terhubung dengan komputer
+- Lakukan seperti halnya tugas pendahuluan poin 1
+- Pastikan Arduino Uno terhubung dengan komputer
 
 2. Program Percobaan
 
 ```cpp
-// ===============================
-// PRAKTIKUM: Running LED dengan For Loop
-// ===============================
+#include <Arduino.h>
 
-// TODO: Tentukan nilai delay (semakin besar, semakin lambat)
-// int timer = ...;
+// ================= PIN =================
+const int segmentPins[8] = {7, 6, 5, 11, 10, 8, 9, 4}; 
+// a  b  c  d  e  f  g  dp
 
-void setup() {
-  // TODO: Gunakan perulangan for untuk inisialisasi pin LED
-  // Rentang pin: dari pin ... sampai pin ...
-  
-  // for (int ledPin = ...; ledPin < ...; ledPin++) {
-  //   pinMode(ledPin, ...);   // set sebagai OUTPUT
-  // }
+const int btnUp = 2;
+
+// ================= DATA =================
+// CC: 1 = ON, 0 = OFF
+byte digitPattern[16][8] = {
+  {1,1,1,1,1,1,0,0}, //0
+  {0,1,1,0,0,0,0,0}, //1
+  {1,1,0,1,1,0,1,0}, //2
+  {1,1,1,1,0,0,1,0}, //3
+  {0,1,1,0,0,1,1,0}, //4
+  {1,0,1,1,0,1,1,0}, //5
+  {1,0,1,1,1,1,1,0}, //6
+  {1,1,1,0,0,0,0,0}, //7
+  {1,1,1,1,1,1,1,0}, //8
+  {1,1,1,1,0,1,1,0}, //9
+  {1,1,1,0,1,1,1,0}, //A
+  {0,0,1,1,1,1,1,0}, //b
+  {1,0,0,1,1,1,0,0}, //C
+  {0,1,1,1,1,0,1,0}, //d
+  {1,0,0,1,1,1,1,0}, //E
+  {1,0,0,0,1,1,1,0}  //F
+};
+
+int currentDigit = 0;
+
+// state sebelumnya (untuk edge detection)
+bool lastUpState = HIGH;
+
+// ================= FUNCTION =================
+void displayDigit(int num)
+{
+  for(int i=0;i<8;i++)
+  {
+    digitalWrite(segmentPins[i], digitPattern[num][i]);
+  }
 }
 
-void loop() {
-  // =========================
-  // BAGIAN 1: LED dari kiri ke kanan
-  // =========================
-  
-  // TODO: Buat perulangan dari pin kecil ke besar
-  // for (int ledPin = ...; ledPin < ...; ledPin++) {
-    
-    // TODO: Nyalakan LED
-    // digitalWrite(ledPin, ...);
-    
-    // TODO: Beri delay
-    // delay(...);
-    
-    // TODO: Matikan LED
-    // digitalWrite(ledPin, ...);
-  // }
+// ================= SETUP =================
+void setup()
+{
+  for(int i=0;i<8;i++)
+  {
+    pinMode(segmentPins[i], OUTPUT);
+  }
 
-  // =========================
-  // BAGIAN 2: LED dari kanan ke kiri
-  // =========================
-  
-  // TODO: Buat perulangan dari pin besar ke kecil
-  // for (int ledPin = ...; ledPin >= ...; ledPin--) {
-    
-    // TODO: Nyalakan LED
-    // digitalWrite(ledPin, ...);
-    
-    // TODO: Beri delay
-    // delay(...);
-    
-    // TODO: Matikan LED
-    // digitalWrite(ledPin, ...);
-  // }
+  pinMode(btnUp, INPUT_PULLUP);
+
+  displayDigit(currentDigit);
+}
+
+// ================= LOOP =================
+void loop()
+{
+  bool upState = digitalRead(btnUp);
+
+  // ===== UP (maju) =====
+  if(lastUpState == HIGH && upState == LOW)
+  {
+    currentDigit++;
+    if(currentDigit > 15) currentDigit = 0;
+    displayDigit(currentDigit);
+  }
+
+  lastUpState = upState;
 }
 ```
 
 3. Simpan sketch dengan nama file modul1_perulangan
 4. Konfigurasi Rangkaian
 
-Membuat rangkaian yang menghubungkan 5 buah LED dengan Pin digital menggunakan breadboard sesuai pada Gambar 1.1 dengan konfigurasi pin sesuai pada Tabel berikut:
+<img width="940" height="387" alt="image" src="https://github.com/user-attachments/assets/c0221663-a82f-4a28-9632-64709611f175" />
 
-| No | Komponen | Pin    |
-|----|----------|--------|
-| 1  | LED 1    | Pin 2  |
-| 2  | LED 2    | Pin 3  |
-| 3  | LED 3    | Pin 4  |
-| 4  | LED 4    | Pin 5  |
-| 5  | LED 5    | Pin 6  |
-| 6  | LED 6    | Pin 7  |
-| 7  | GND      | GND    |
+Membuat rangkaian yang menghubungkan pin pada seven segment dengan Pin digital menggunakan breadboard sesuai pada Gambar dengan konfigurasi pin sesuai pada Tabel.
+
+| Segmen | Label | Pin Arduino |
+|:------:|:-----:|:-----------:|
+| a      | a     | 7           |
+| b      | b     | 6           |
+| c      | c     | 5           |
+| d      | d     | 11          |
+| e      | e     | 10          |
+| f      | f     | 8           |
+| g      | g     | 9           |
+| dp     | titik | 4           |
+
+Push button ----- Pin 2
 
 6. Berikutnya compile dan upload program ke dalam Arduino board. Perhatikan dan berikan analisi pada hasil yang terjadi, apakah sesuai dengan spesifikasi atau tidak. Tuliskan di Buku Catatan Praktikum
 
+https://github.com/user-attachments/assets/a77dff1c-3347-441b-a191-2ddefb3af922
+
 ## 💡 Pertanyaan Praktikum
-1)	Gambarkan rangkaian schematic 5 LED running yang digunakan pada percobaan!
-2)	Jelaskan bagaimana program membuat efek LED berjalan dari kiri ke kanan!
-3)	Jelaskan bagaimana program membuat LED kembali dari kanan ke kiri!
-4)	Buatkan program agar LED menyala tiga LED kanan dan tiga LED kiri secara bergantian dan berikan penjelasan disetiap baris kode nya dalam bentuk README.md!
+1.	Gambarkan rangkaian schematic yang digunakan pada percobaan!
+2.	Mengapa pada push button digunakan mode INPUT_PULLUP pada Arduino Uno? Apa keuntungannya dibandingkan rangkaian biasa?
+3.	Jika salah satu LED segmen tidak menyala, apa saja kemungkinan penyebabnya dari sisi hardware maupun software?
+4.	Modifikasi rangkaian dan program dengan dua push button yang berfungsi sebagai penambahan (increment) dan pengurangan (decrement) pada sistem counter dan berikan penjelasan disetiap baris kode nya dalam bentuk README.md!
 
 <h2></h2>
 
