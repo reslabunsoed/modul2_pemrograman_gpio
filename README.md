@@ -172,6 +172,10 @@ void loop()
 
 https://github.com/user-attachments/assets/8eb97c45-85ce-40b7-8cfd-cd6f978b9f37
 
+Pada bagian percobaan ini praktikan diminta untuk mengendalikan counter seven segment dengan menggunakan push button.
+
+Selanjutnya, untuk bagian percobaan dapat diakses melalui [Modul 2B: Push Button Seven Segment Counter](https://github.com/reslabunsoed/modul2_pemrograman_gpio/tree/15981a5cc7cc9f969b6feea444b73479e086f09c/Percobaan%202)
+
 ## 📚 Pertanyaan Praktikum
 
 1.	Uraikan hasil tugas pada praktikum yang telah dilakukan pada setiap percobaan!
