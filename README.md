@@ -120,6 +120,10 @@ Menghubungkan kaki-kaki Seven Segment ke Ground dan VCC dari Arduino
 
 https://github.com/user-attachments/assets/bcbaa2a8-cac5-4ad5-bf02-c060824722c4
 
+Pada percobaan GPIO output, praktikan diminta untuk menampilkan counter di Seven Segment.
+
+Selanjutnya dapat membuka bagian percobaan berikut [Percobaan 2A: Counter dengan Seven Segment](https://github.com/reslabunsoed/modul2_pemrograman_gpio/tree/5aa16356b3cadf03e29bdcec3722a8aad6940184/Percobaan%201)
+
 <h3><a href="Percobaan 2">Percobaan 2B: Kontrol Counter Dengan Push Button</a></h3>
 Push button adalah sebuah komponen yang menghubungkan dua titik dalam rangkaian ketika ditekan. Sebuah pushbutton memiliki setidaknya dua kontak, yang akan menutup atau membuka rangkaian ketika tombol ditekan. Biasanya sebuah pegas akan mengembalikan tombol ke posisi semula ketika tekanan dilepaskan. 
 
