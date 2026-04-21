@@ -21,59 +21,127 @@ Fokus percobaan adalah merancang rangkaian seven segment 1 byte sebagai counter 
 ```cpp
 #include <Arduino.h>
 
-//7-Segment Display (Efficient Version)
-//Display 0 - 9 and A - F
+// ==========================================
+// PRAKTIKUM: 7-Segment Display (0 - F)
+// ==========================================
+// Tujuan:
+// - Mahasiswa memahami cara mengontrol 7-segment
+// - Mahasiswa dapat menampilkan angka 0–9 dan huruf A–F
 
-// Pin mapping segment
-const int segmentPins[8] = {7, 6, 5, 11, 10, 8, 9, 4}; 
-// a  b  c  d  e  f  g  dp
-
-// Segment pattern for 0-F
-// urutan segmen: a b c d e f g dp
-byte digitPattern[16][8] = {
-
-  {1,1,1,1,1,1,0,0}, //0
-  {0,1,1,0,0,0,0,0}, //1
-  {1,1,0,1,1,0,1,0}, //2
-  {1,1,1,1,0,0,1,0}, //3
-  {0,1,1,0,0,1,1,0}, //4
-  {1,0,1,1,0,1,1,0}, //5
-  {1,0,1,1,1,1,1,0}, //6
-  {1,1,1,0,0,0,0,0}, //7
-  {1,1,1,1,1,1,1,0}, //8
-  {1,1,1,1,0,1,1,0}, //9
-  {1,1,1,0,1,1,1,0}, //A
-  {0,0,1,1,1,1,1,0}, //b
-  {1,0,0,1,1,1,0,0}, //C
-  {0,1,1,1,1,0,1,0}, //d
-  {1,0,0,1,1,1,1,0}, //E
-  {1,0,0,0,1,1,1,0}  //F
+// -------------------------------
+// TODO 1:
+// Tentukan pin untuk masing-masing segmen
+// Urutan segmen: a, b, c, d, e, f, g, dp
+// Contoh: {7, 6, 5, ...}
+// -------------------------------
+const int segmentPins[8] = {
+  // isi di sini
 };
 
-// Fungsi menampilkan digit
+
+// -------------------------------
+// TODO 2:
+// Lengkapi pola untuk menampilkan
+// angka 0 - 9 dan huruf A - F
+//
+// Format:
+// 1 = LED segmen ON
+// 0 = LED segmen OFF
+//
+// Urutan: a b c d e f g dp
+//
+// Contoh angka 0:
+// {1,1,1,1,1,1,0,0}
+// -------------------------------
+byte digitPattern[16][8] = {
+
+  // 0
+  { /* isi */ },
+
+  // 1
+  { /* isi */ },
+
+  // 2
+  { /* isi */ },
+
+  // 3
+  { /* isi */ },
+
+  // 4
+  { /* isi */ },
+
+  // 5
+  { /* isi */ },
+
+  // 6
+  { /* isi */ },
+
+  // 7
+  { /* isi */ },
+
+  // 8
+  { /* isi */ },
+
+  // 9
+  { /* isi */ },
+
+  // A
+  { /* isi */ },
+
+  // b
+  { /* isi */ },
+
+  // C
+  { /* isi */ },
+
+  // d
+  { /* isi */ },
+
+  // E
+  { /* isi */ },
+
+  // F
+  { /* isi */ }
+
+};
+
+
+// -------------------------------
+// TODO 3:
+// Lengkapi fungsi untuk menampilkan digit
+// Gunakan perulangan untuk mengakses setiap segmen
+// -------------------------------
 void displayDigit(int num)
 {
-  for(int i=0;i<8;i++)
+  for(int i = 0; i < 8; i++)
   {
-    digitalWrite(segmentPins[i], digitPattern[num][i]);
+    // tulis logika untuk menyalakan/mematikan segmen
+    // menggunakan digitalWrite()
   }
 }
 
+
+// -------------------------------
+// SETUP
+// -------------------------------
 void setup()
 {
-  for(int i=0;i<8;i++)
-  {
-    pinMode(segmentPins[i], OUTPUT);
-  }
+  // TODO 4:
+  // Set semua pin segment sebagai OUTPUT
 }
 
+
+// -------------------------------
+// LOOP
+// -------------------------------
 void loop()
 {
-  for(int i=0;i<16;i++)   //0 sampai F
-  {
-    displayDigit(i);
-    delay(1000);
-  }
+  // TODO 5:
+  // Tampilkan angka dari 0 sampai F
+  // Gunakan perulangan (for)
+
+  // TODO 6:
+  // Tambahkan delay agar perubahan terlihat
 }
 ```
 3. Simpan sketch dengan nama file modul2_output
