@@ -11,6 +11,8 @@ Fokus percobaan adalah merancang rangkaian seven segment 1 byte sebagai counter 
 3.	Pola berjalan terus menerus tanpa error 
 4.	Tidak ada LED yang mati atau tidak sesuai urutan
 
+https://github.com/user-attachments/assets/2e5734d2-fbed-449c-921f-1a090c3ba1fb
+
 ## ♻️ Langkah Percobaan
 1. Persiapkan alat dan bahan
 - Lakukan seperti halnya tugas pendahuluan poin
